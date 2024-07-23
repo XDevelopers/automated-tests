@@ -9,7 +9,7 @@ setCommonPlugins();
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
   tests: './*_test.js',
-  output: '',
+  output: './output',
   helpers: {
     Playwright: {
       browser: 'chromium',
