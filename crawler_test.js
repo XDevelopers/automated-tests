@@ -11,28 +11,34 @@ Scenario('Lista de países e territórios', async ({ I }) => {
     I.seeElement('table[class="wikitable"]');
     I.wait( 5 );
 
-/*
+    //I.executeScript(() => window.alert('Hello world'));
+
     const elements = await I.executeScript(() => {
         return Array.from(document.querySelectorAll('table[class="wikitable"] tbody tr')).map(row => {
             let firstColumn = "";
             let secondColumn = "";
-            if (row && row.querySelector('td:nth-child(2) a:nth-child(2)')) {
-                // Country Name
-                firstColumn = row.querySelector('td:nth-child(2) a:nth-child(2)').textContent;
-                console.log(firstColumn);
-            }
-            if (row && row.querySelector('td:nth-child(3)')) {
-                // Country Area
-                secondColumn = row.querySelector('td:nth-child(3)').textContent;
-                console.log(secondColumn);
+            if (row) {
+                if (row.querySelector('td:nth-child(2) a:nth-child(2)')) {
+                    // Country Name
+                    firstColumn = row.querySelector('td:nth-child(2) a:nth-child(2)').textContent;
+                    console.log(firstColumn);
+                }
+                if (row.querySelector('td:nth-child(3)')) {
+                    // Country Area
+                    secondColumn = row.querySelector('td:nth-child(3)').textContent;
+                    console.log(secondColumn);
+                }
             }
 
-        return { countryName: firstColumn, area: secondColumn };
+        return { 
+            countryName: firstColumn, 
+            area: secondColumn 
+        };
         });
     });
 
     // Salvar os dados em um arquivo JSON
     fs.writeFileSync('./output/output.json', JSON.stringify(elements, null, 2));
-*/
+
     I.wait(5);
 });
